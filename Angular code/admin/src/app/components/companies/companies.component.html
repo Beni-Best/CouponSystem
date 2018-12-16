@@ -1,0 +1,45 @@
+
+<h3>Company:</h3>
+<hr>
+<table style="margin-left: 10px"  class="table table-striped" >
+<tr>
+  <th>
+   ID
+  </th>
+  <th>
+   NAME
+  </th>
+  <th>
+  PASSWORD
+  </th>
+  <th>
+  EMAIL
+  </th>
+</tr >
+
+<tr *ngFor="let comp of company">
+  <td>
+  {{comp.id}}
+  </td>
+  <td>
+    {{comp.name}}
+  </td>
+  <td>
+    {{comp.password}}
+  </td>
+  <td>
+    {{comp.email}}
+  </td>
+  </tr>
+</table>
+
+<button class="btn btn-primary" (click)="show('create')">Create Company</button>
+<button class="btn btn-danger" (click)="show('remove')">Remove Company</button>
+<button class="btn btn-warning" (click)="show('update')">Update Company</button>
+<button class="btn btn-info" (click)="show('get')">Get Company</button><br>
+<app-create-company *ngIf="showcreateflag"></app-create-company>
+<app-remove-company  *ngIf="showremoveflag"></app-remove-company>
+<app-update-company *ngIf="showupdateflag"></app-update-company>
+<app-get-company *ngIf="showgetflag"></app-get-company>
+
+

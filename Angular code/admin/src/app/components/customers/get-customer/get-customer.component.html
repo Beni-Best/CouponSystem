@@ -1,0 +1,32 @@
+
+  <div>
+  <input [disabled]="customer.name!==''" type="number" name="cstidtxt" [(ngModel)]="customer.id">Customer ID <br>
+  <input [disabled]="customer.id!==0 && customer.id!==null" type="text" name="cstnametxt" [(ngModel)]="customer.name">Customer Name <br>
+  <button [disabled]="customer.id===0 || customer.id===null && customer.name===''" class="btn btn-info" (click)="getCustomer()">GET</button>
+</div>
+  <table style="margin-left: 10px"  class="table table-striped" >
+    <tr>
+      <th>
+       ID
+      </th>
+      <th>
+       NAME
+      </th>
+      <th>
+      PASSWORD
+      </th>
+    </tr >
+    
+    <tr>
+      <td>
+      {{showCust.id}}
+      </td>
+      <td>
+        {{showCust.name}}
+      </td>
+      <td>
+        {{showCust.password}}
+      </td>
+      </tr>
+    </table>
+  

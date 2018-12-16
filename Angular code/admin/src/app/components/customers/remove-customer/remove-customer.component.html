@@ -1,0 +1,3 @@
+<input [disabled]="customer.name!==''" type="number" name="cstidtxt" [(ngModel)]="customer.id">Customer ID <br>
+<input [disabled]="customer.id!==0 && customer.id!==null" type="text" name="cstnametxt" [(ngModel)]="customer.name">Customer Name <br>
+<button [disabled]="customer.id===0 || customer.id===null && customer.name===''" class="btn btn-danger" (click)="removeCustomer()">REMOVE</button>

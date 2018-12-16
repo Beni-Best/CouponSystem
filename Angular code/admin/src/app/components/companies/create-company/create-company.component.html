@@ -1,0 +1,4 @@
+<input type="text" name="cstnametxt" [(ngModel)]="company.name">Company Name <br>
+<input type="text" name="cstpswdtxt" [(ngModel)]="company.password">Company Password <br>
+<input type="text" name="cstpswdtxt" [(ngModel)]="company.email">Company Email <br>
+<button  [disabled]="!company.name || !company.password || !company.email " class="btn btn-primary" (click)="addCompany()">CREATE</button>

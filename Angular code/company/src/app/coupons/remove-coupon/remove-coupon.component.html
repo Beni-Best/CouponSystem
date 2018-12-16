@@ -1,0 +1,4 @@
+<h1>Remove coupon:</h1>
+by id<input [disabled]="tmpCoup.title || tmpCoup===''" type="number" [(ngModel)]="tmpCoup.id" #idtxt>
+by title<input [disabled]="tmpCoup.id" type="text" [(ngModel)]="tmpCoup.title" #titletxt> <br>
+<button (click)="remove()" class="btn btn-danger">remove</button>

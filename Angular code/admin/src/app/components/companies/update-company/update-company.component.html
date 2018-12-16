@@ -1,0 +1,5 @@
+<input type="text" name="cstname" [(ngModel)]="company.name">Enter Company Name<br>
+<input  [disabled]="company.name==''" type="text" name="cstpswd" [(ngModel)]="company.password">Enter new password <br>
+<input  [disabled]="company.name==''" type="text" name="cstpswd" [(ngModel)]="company.email">Enter new Email <br>
+<button [disabled]="!company.password" class="btn btn-warning"  (click)="updateCompany('password')">UPDATE Password</button>
+<button [disabled]="!company.email" class="btn btn-warning" (click)="updateCompany('email')">UPDATE Email</button>

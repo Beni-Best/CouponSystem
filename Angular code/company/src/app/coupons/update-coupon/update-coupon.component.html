@@ -1,0 +1,6 @@
+<br>
+<input type="number"  [(ngModel)]="coupon.id">Enter Coupon ID<br>
+ <input  [disabled]=" coupon.id==null" type="date"  [(ngModel)]="coupon.end_Date">Enter new end date <br> 
+<input  [disabled]=" coupon.id==null" type="number"  [(ngModel)]="coupon.price">Enter new Price <br>
+<button [disabled]="!coupon.end_Date" class="btn btn-warning"  (click)="updateCoupon('date')">UPDATE end date</button>
+<button [disabled]="!coupon.price" class="btn btn-warning" (click)="updateCoupon('price')">UPDATE price</button>

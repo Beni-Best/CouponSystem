@@ -1,0 +1,88 @@
+
+<h3>Coupon</h3>
+<button [disabled]="!coupModel.id" (click)="getCouponById()" class="btn btn-info">get coupon by id</button>
+<input type="number" [(ngModel)]="coupModel.id"><br>
+<button [disabled]="!coupModel.type" (click)="getCouponByType()"  class="btn btn-info">get my coupons by type</button>
+<select  [(ngModel)]="coupModel.type" #type>
+  <option value="RESTURANS">RESTURANS</option>
+  <option value="ELECTRICITY">ELECTRICITY</option>
+  <option value="FOOD">FOOD</option>
+  <option value="HEALTH">HEALTH</option>
+  <option value="SPORTS">SPORTS</option>
+  <option value="CAMPING">CAMPING</option>
+</select><br>
+<button [disabled]="!coupModel.price" (click)="getCouponByPrice()" class="btn btn-info">get my coupons by price</button>
+<input type="number" [(ngModel)]="coupModel.price"><br>
+<button [disabled]="!coupModel.end_Date" (click)="getCouponByEndDate()" class="btn btn-info">get my coupons before end date</button>
+<input type="date" [(ngModel)]="coupModel.end_Date"><br>
+
+<hr>
+
+<table style="margin-left: 10px" class="table table-striped table-bordered" style="color:blue">
+  <tr >
+    <th colspan="9" style="text-align: center"><h5>Request coupons</h5></th>
+ 
+  </tr>
+<tr>
+  <th>
+   ID
+  </th>
+  <th>
+    title
+  </th>
+  <th>
+    start_date
+  </th>
+  <th>
+    end_date
+  </th>
+  <th>
+    amount
+  </th>
+  <th>
+    type
+  </th>
+  <th>
+    message
+  </th>
+  <th>
+    price
+  </th>
+  <th>
+    image
+  </th>
+
+</tr >
+
+
+<tr *ngFor="let coup of coupons">
+  <td>
+  {{coup.id}}
+  </td>
+  <td>
+    {{coup.title}}
+  </td>
+  <td>
+    {{coup.start_Date}}
+  </td>
+  <td>
+    {{coup.end_Date}}
+  </td>
+  <td>
+    {{coup.amount}}
+  </td>
+  <td>
+    {{coup.type}}
+  </td>
+  <td>
+    {{coup.message}}
+  </td>
+  <td>
+    {{coup.price}}
+  </td>
+  <td>
+    <img [src]="coup.image"  height="70" width="70" alt="">
+  </td>
+ 
+  </tr>
+</table>

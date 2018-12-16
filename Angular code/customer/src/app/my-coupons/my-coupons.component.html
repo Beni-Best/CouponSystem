@@ -1,0 +1,26 @@
+<table class="table">
+    <thead class="thead-dark">
+        <tr >
+            <th colspan="5" ><h5> My Coupons:</h5></th>
+          </tr>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Coupon Title</th>
+        <th scope="col">Message</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let coup of coupons; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{coup.title}}</td>
+        <td>{{coup.message}}</td>
+        <td>{{coup.end_Date}}</td>
+        <td>{{coup.price}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  
+

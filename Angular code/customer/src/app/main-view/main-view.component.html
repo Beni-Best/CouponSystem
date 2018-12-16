@@ -1,0 +1,109 @@
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+   <a value="Refresh Page" onClick="window.location.reload()" class="navbar-brand" href="#">HOME</a>
+   <!-- (click)="getAllCoupons()" -->
+    <button (click)="showCart('mycoups') " class="navbar-brand" href="#"><span style="color:darkblue">My Coupons</span></button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText" >
+      
+      <ul class="navbar-nav mr-auto">
+         
+        <li>
+        <form class="form-inline">
+            <div class="input-group">
+              <input type="number" class="form-control" placeholder="Search by price" aria-label="Username" aria-describedby="basic-addon1" name="prc"  [(ngModel)]="price">
+              <div class="input-group-prepend">
+                  <a (click)="getCouponsByPrice()" href="#"> <span class="input-group-text" id="basic-addon1">GO</span></a> 
+                  </div>
+            </div>
+          </form>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span style="color:whitesmoke">Search by type</span></a>
+            <div class="dropdown-menu">
+              <a (click)="getCouponsByType('RESTURANS')" class="dropdown-item" href="#">RESTURANS</a>
+              <a (click)="getCouponsByType('ELECTRICITY')" class="dropdown-item" href="#">ELECTRICITY</a>         
+              <a (click)="getCouponsByType('FOOD')" class="dropdown-item" href="#">FOOD</a>
+              <a (click)="getCouponsByType('HEALTH')" class="dropdown-item" href="#">HEALTH</a>
+              <a (click)="getCouponsByType('SPORTS')" class="dropdown-item" href="#">SPORTS</a>
+              <a (click)="getCouponsByType('CAMPING')" class="dropdown-item" href="#">CAMPING</a>
+              <div class="dropdown-divider"></div>
+              <a (click)="getAllCoupons()" class="dropdown-item" href="#">ALL</a>
+            </div>
+               
+          </li>
+          <li  class="navbar-text" style="color:white">
+              {{typeName}}
+          </li>
+      </ul>
+  
+      
+      <span class="navbar-text" style="color:white">
+          {{cartCounter}}
+          <!-- {{_WebApiClientService.testCounter}} the way to transfer counter with service--> 
+           </span>
+      <button (click)="showCart('cart')" class="btn ">   My Cart</button>  &nbsp;
+      <button (click)="logout()" class="btn btn-danger">   Logout</button>  
+    </div>
+  </nav>
+
+
+  <app-cart
+  *ngIf="showcartflag"
+  [coupons]="cartCoupons"
+  (removePressed)="removed()"
+  ></app-cart>
+
+  <app-my-coupons
+  *ngIf="showmycoupsflag"
+  ></app-my-coupons>
+
+
+
+	
+<div class="container">
+<div class="row">
+
+<!--team-1-->
+<div  *ngFor="let coup of coupons;let i = index" class="col-lg-4">
+<div class="our-team-main">
+
+<div class="team-front">
+<img *ngIf="coup.image else noResults"  [src]="coup.image" [height]="120" [width]="120" alt="" class="img-fluid" />
+<ng-template #noResults>
+    <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"  [height]="100" [width]="100" alt="" class="img-fluid">
+  </ng-template>
+<h3>{{coup.title}}</h3>
+<p>{{coup.type}}</p>
+</div>
+
+<div class="team-back">
+<span>
+    <p class="card-text">{{coup.message}}</p>
+    <p class="card-text"><small>{{coup.type}}</small></p>
+    <p class="card-text">Price <mark class="text-muted">{{coup.price}}</mark></p>
+    <p class="card-text">Stock <mark class="text-muted">{{coup.amount}}</mark></p>
+    <button (click)="addToCart(i)" class="rounded float-right ,btn btn-primary">Add to cart</button>
+    <footer class="blockquote-footer">
+    
+      <cite title="Source Title">Item id {{coup.id}}</cite><br>
+      <cite title="Source Title">availble untill {{coup.end_Date}}</cite>
+
+    </footer>
+</span>
+</div>
+
+</div>
+</div>
+<!--team-1-->
+
+
+
+
+
+
+</div>
+</div>

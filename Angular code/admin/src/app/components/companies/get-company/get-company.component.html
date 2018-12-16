@@ -1,0 +1,36 @@
+
+  <input [disabled]="company.name!==''" type="number" name="cstidtxt"  [(ngModel)]="company.id">Company ID <br>
+  <input [disabled]="company.id!==0 && company.id!==null" type="text" name="cstnametxt" [(ngModel)]="company.name">Company Name <br>
+  <button [disabled]="company.id===null && company.name===''" class="btn btn-info"  (click)="getCompany()">GET</button>
+<table style="margin-left: 10px"  class="table table-striped" >
+  <tr>
+    <th>
+     ID
+    </th>
+    <th>
+     NAME
+    </th>
+    <th>
+    PASSWORD
+    </th>
+    <th>
+      EMAIL
+   </th>
+  </tr >
+  
+  <tr>
+    <td>
+    {{showComp.id}}
+    </td>
+    <td>
+      {{showComp.name}}
+    </td>
+    <td>
+      {{showComp.password}}
+    </td>
+    <td>
+      {{showComp.email}}
+    </td>
+    </tr>
+  </table>
+

@@ -1,0 +1,3 @@
+<input type="text" name="cstname" [(ngModel)]="customer.name">Enter Customer Name<br>
+<input  [disabled]="customer.name===''" type="text" name="cstpswd" [(ngModel)]="customer.password">Enter new password <br>
+<button [disabled]="customer.name==='' || customer.password===''" class="btn btn-warning" (click)="updateCustomer()">UPDATE</button>

@@ -1,0 +1,46 @@
+
+<h3>Customers:</h3>
+<hr>
+<table style="margin-left: 10px"  class="table table-striped" >
+<tr>
+  <th>
+   ID
+  </th>
+  <th>
+   NAME
+  </th>
+  <th>
+  PASSWORD
+  </th>
+</tr >
+
+<tr *ngFor="let cust of customers">
+  <td>
+  {{cust.id}}
+  </td>
+  <td>
+    {{cust.name}}
+  </td>
+  <td>
+    {{cust.password}}
+  </td>
+  </tr>
+</table>
+
+<button class="btn btn-primary" (click)="show('create')">Create customer</button>
+<button class="btn btn-danger" (click)="show('remove')">Remove customer</button>
+<button class="btn btn-warning" (click)="show('update')">Update customer</button>
+<button class="btn btn-info" (click)="show('get')">Get customer</button><br>
+<app-create-customer *ngIf="showcreateflag"></app-create-customer>
+<app-remove-customer  *ngIf="showremoveflag"></app-remove-customer>
+<app-update-customer *ngIf="showupdateflag"></app-update-customer>
+<app-get-customer *ngIf="showgetflag"></app-get-customer>
+<!-- 
+Why this is not working for me?!
+
+<button routerLink="compcomp">Companies router</button>
+<button routerLink="custcreate">Create Customer router</button>
+<router-outlet></router-outlet>
+ -->
+
+

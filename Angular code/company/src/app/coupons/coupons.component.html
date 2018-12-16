@@ -1,0 +1,51 @@
+<button (click)="logout()" class="btn btn-danger" style="float:right">LOGOUT</button>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" > 
+  
+    <li class="nav-item">
+      <a class="nav-link active " id="pills-create-tab" data-toggle="pill" href="#pills-create" role="tab" aria-controls="pills-create" aria-selected="true">create</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-delete-tab" data-toggle="pill" href="#pills-delete" role="tab" aria-controls="pills-delete" aria-selected="false">delete</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-update-tab" data-toggle="pill" href="#pills-update" role="tab" aria-controls="pills-update" aria-selected="false">update</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-get-tab" data-toggle="pill" href="#pills-get" role="tab" aria-controls="pills-get" aria-selected="false">get</a>
+      </li>
+    
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-pane fade show active" id="pills-create" role="tabpanel" aria-labelledby="pills-create-tab"><app-create-coupon></app-create-coupon></div>
+    <div class="tab-pane fade" id="pills-delete" role="tabpanel" aria-labelledby="pills-delete-tab"><app-remove-coupon ></app-remove-coupon></div>
+    <div class="tab-pane fade" id="pills-update" role="tabpanel" aria-labelledby="pills-update-tab"><app-update-coupon></app-update-coupon></div>
+    <div class="tab-pane fade" id="pills-get" role="tabpanel" aria-labelledby="pills-get-tab"><app-get-coupon></app-get-coupon></div>
+  </div>
+
+<hr>
+<h1>My Coupons</h1>
+
+<div class="card-columns">
+  <div *ngFor="let coup of coupons" class="card">
+    <img *ngIf="coup.image else noResults"class="rounded float-right"   [src]="coup.image" [height]="120" [width]="120" alt="">
+    <ng-template #noResults>
+      <img class="rounded float-right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png"  height="120" width="120" alt="">
+    </ng-template>
+    <div class="card-body ">
+      <h5 class="card-title ">{{coup.title}}</h5>
+      <p class="card-text">{{coup.message}}</p>
+      <p class="card-text"><small>{{coup.type}}</small></p>
+      <p class="card-text">Price <mark class="text-muted">{{coup.price}}</mark></p>
+      <p class="card-text">Stock <mark class="text-muted">{{coup.amount}}</mark></p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+        <cite title="Source Title">Item id {{coup.id}}</cite><br>
+        <cite title="Source Title">availble untill {{coup.end_Date}}</cite>
+        </small>
+      </footer>
+    </div>
+  </div>
+</div>
+
+

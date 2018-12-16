@@ -1,0 +1,3 @@
+<input type="text" name="cstnametxt" [(ngModel)]="customer.name">Customer Name <br>
+<input type="text" name="cstpswdtxt" [(ngModel)]="customer.password">Customer Password <br>
+<button [disabled]="!customer.name || !customer.password  " class="btn btn-primary" (click)="addCustomer()">CREATE</button>

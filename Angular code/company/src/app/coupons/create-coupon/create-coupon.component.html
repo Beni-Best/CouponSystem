@@ -1,0 +1,22 @@
+<h4>Create Coupon:</h4>
+<div>
+Title<input type="text" [(ngModel)]="tmpCoup.title" #title><br>
+End_Date<input type="date" [(ngModel)]="tmpCoup.end_Date" #enddate><br>
+Amount<input type="number" [(ngModel)]="tmpCoup.amount" #amount><br>
+Type
+<select  [(ngModel)]="tmpCoup.type" #type>
+  <option value="RESTURANS">RESTURANS</option>
+  <option value="ELECTRICITY">ELECTRICITY</option>
+  <option value="FOOD">FOOD</option>
+  <option value="HEALTH">HEALTH</option>
+  <option value="SPORTS">SPORTS</option>
+  <option value="CAMPING">CAMPING</option>
+</select><br>
+Message<input type="text" maxlength="40" [(ngModel)]="tmpCoup.message" #message><br>
+<p *ngIf="tmpCoup.message.length>=40" style="color:red">Message must be not larger than 40 symbols</p>
+Price<input type="number" [(ngModel)]="tmpCoup.price" #price><br>
+Image url<input type="text" maxlength="300" [(ngModel)]="tmpCoup.image" #imgurl><br>
+<p *ngIf="tmpCoup.image.length>=300" style="color:red">Message must be not larger than 300 symbols</p>
+<button [disabled]="!title.value || !amount.value || !type.value || !price.value || !enddate.value || tmpCoup.image.length>=301 || tmpCoup.message.length>=41"  (click)="createCoupon()"  class="btn btn-primary"> Create Coupon</button>
+
+</div>
