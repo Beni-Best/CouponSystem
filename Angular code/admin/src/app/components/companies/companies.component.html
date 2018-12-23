@@ -15,9 +15,12 @@
   <th>
   EMAIL
   </th>
+  <th>
+    Companies customers
+  </th>
 </tr >
 
-<tr *ngFor="let comp of company">
+<tr *ngFor="let comp of company; let i = index">
   <td>
   {{comp.id}}
   </td>
@@ -30,8 +33,48 @@
   <td>
     {{comp.email}}
   </td>
+  <td>
+    <button (click)="getCompaniesCustomers(i)" class="btn btn-primary">Get customers</button>
+  </td>
   </tr>
 </table>
+
+
+  <div *ngIf="showcustsflag">   
+      <div class="col-12 text-center">
+<h3>{{name}}'s Customers:</h3>
+
+<button (click)="showcustsflag=false" class="btn btn-primary" style="float:center" >Hide</button>
+</div>
+<table style="margin-left: 10px"  class="table table-striped" >
+<tr>
+  <th>
+   ID
+  </th>
+  <th>
+   NAME
+  </th>
+  <th>
+  PASSWORD
+  </th>
+
+
+</tr >
+
+<tr *ngFor="let cust of customers; let i = index">
+  <td>
+  {{cust.id}}
+  </td>
+  <td>
+    {{cust.name}}
+  </td>
+  <td colspan="2">
+    {{cust.password}}
+  </td>
+
+  </tr>
+</table>
+</div>
 
 <button class="btn btn-primary" (click)="show('create')">Create Company</button>
 <button class="btn btn-danger" (click)="show('remove')">Remove Company</button>

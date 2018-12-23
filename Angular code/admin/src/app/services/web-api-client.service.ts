@@ -56,9 +56,23 @@ export class WebApiClientService {
           this._http.get('http://localhost:8080/admin/logout').subscribe((resp)=>{
             console.log(resp)
           })
-          window.location.href='http://localhost:8080/login.html';
+          window.location.href='http://localhost:8080';
         }
       })
 
+    }
+
+    ajaxGetCompaniesCustomers(id:number){
+      console.log(id)
+      this._http.get('http://localhost:8080/admin/getallcustomerbycompany/'+id).subscribe((resp)=>{
+        while(this.customers.length>0){
+          this.customers.pop();
+        }
+        let items = resp.json();
+        for (let item of items){
+          this.customers.push(item);
+        }
+        console.log(this.customers);
+      })
     }
 }

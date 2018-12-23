@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Company } from 'src/app/Common/Company';
+import {Customer} from './../../Common/Customer';
 import {WebApiClientService} from './../../services/web-api-client.service';
 @Component({
   selector: 'app-companies',
@@ -9,11 +10,8 @@ import {WebApiClientService} from './../../services/web-api-client.service';
 export class CompaniesComponent implements OnInit {
 
   public company: Company[];
-  // constructor(private _http:Http) {
-  //   this._http.get('http://localhost:8080/admin/getallcompanies').subscribe((resp)=>{
-  //     this.company=resp.json()
-  //   })
-  //  }
+  public customers:Customer[];
+
   constructor(private _WebApiClientService:WebApiClientService) {
     this._WebApiClientService.ajaxGetAllCompany();
     this.company=this._WebApiClientService.company;
@@ -51,5 +49,12 @@ export class CompaniesComponent implements OnInit {
 
   ngOnInit() {
   }
-
+   name : string;
+   showcustsflag=false;
+  getCompaniesCustomers(i:number){
+    this.name=this.company[i].name;
+    this._WebApiClientService.ajaxGetCompaniesCustomers(i+1);
+    this.customers=this._WebApiClientService.customers;
+    this.showcustsflag=true;
+  }
 }
