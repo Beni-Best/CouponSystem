@@ -38,7 +38,6 @@ import coupon.sys.core.system.CouponSystem;
  *
  */
 @RestController
-@CrossOrigin("*")
 public class AdminWS {
 
 
