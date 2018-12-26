@@ -44,14 +44,6 @@ public class CompanyWS {
 
 	private CompanyFacade getFacade(HttpServletRequest request) throws CouponSystemException  {
 		
-//		String username = "Blizzard";
-//		String password = "123321";
-//		
-//		CouponSystem cs = CouponSystem.getInstance();
-//		CompanyFacade compFac;
-//
-//			compFac = (CompanyFacade) cs.login(username, password, ClientType.COMPANY);
-//		return compFac;
 		
 		CompanyFacade cf = (CompanyFacade)request.getSession().getAttribute("facade");
 		return cf;

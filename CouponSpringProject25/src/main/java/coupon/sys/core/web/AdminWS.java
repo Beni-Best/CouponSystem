@@ -52,16 +52,7 @@ public class AdminWS {
 	 */
 	private AdminFacade getFacade(HttpServletRequest request) throws CouponSystemException  {
 
-//		String username = "admin";
-//		String password = "1234";
-//
-//		CouponSystem cs = CouponSystem.getInstance();
-//		AdminFacade admFac;
-//
-//			admFac = (AdminFacade)cs.login(username, password, ClientType.ADMIN);
-//
-//		return admFac;
-		
+
 		AdminFacade admFac = (AdminFacade)request.getSession().getAttribute("facade");
 		return admFac;
 		

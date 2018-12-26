@@ -46,16 +46,6 @@ public class CustomerWS {
 	 */
 	private CustomerFacade getFacade(HttpServletRequest request) throws CouponSystemException  {
 		
-		
-//		String username = "maxim";
-//		String password = "max5555";
-//
-//		CouponSystem cs = CouponSystem.getInstance();
-//		CustomerFacade custFac;
-//
-//			custFac = (CustomerFacade)cs.login(username, password, ClientType.CUSTOMER);
-//
-//		return custFac;
 	
 		CustomerFacade cf = (CustomerFacade)request.getSession().getAttribute("facade");
 		return cf;
