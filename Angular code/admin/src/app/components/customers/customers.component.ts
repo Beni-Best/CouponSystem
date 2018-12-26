@@ -12,6 +12,7 @@ export class CustomersComponent implements OnInit {
 
    customers : Customer[] = new Array<Customer>();
 
+   //one of the ways to show and hide components
   showcreateflag=false;
   showremoveflag=false;
   showupdateflag=false;
@@ -42,25 +43,11 @@ export class CustomersComponent implements OnInit {
     }
   }
 
-
-  // constructor(private _http:Http) {
-  //  this._http.get('http://localhost:8080/admin/getallcustomer').
-  //     subscribe((resp)=>{
-  //    this.customers=resp.json()
-  //  })
-  //  }
-
-  //  constructor(private _WebApiClientService:WebApiClientService) {
-  //  this._WebApiClientService.ajaxGetAllCustomers().subscribe((resp)=>{
-  //     this.customers=resp.json()
-  //   })
-  //   }
-
     constructor(private _WebApiClientService:WebApiClientService) {
     
        }
      
-
+  //shows all customers on customer component initiation
   ngOnInit() {
     while(this.customers.length>0){
       this.customers.pop

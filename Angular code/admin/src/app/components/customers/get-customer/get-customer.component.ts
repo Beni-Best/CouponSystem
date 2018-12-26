@@ -17,8 +17,8 @@ export class GetCustomerComponent implements OnInit {
   ngOnInit() {
   }
 
+    //get Customer. If this.customer.name=''(empty string) it will get customer by id otherwise it will get customer by this.customer.name. Show error message with exception if failed
   getCustomer(){
-
     if(this.customer.name==''){
       this._http.get('http://localhost:8080/admin/getcustomer/'+this.customer.id).subscribe((resp)=>{
         console.log(resp)

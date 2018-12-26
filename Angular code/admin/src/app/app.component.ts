@@ -13,6 +13,7 @@ export class AppComponent {
 
   }
 
+  //request to logout
   logout (){
     this._WebApiClientService.ajaxLogout();
   }

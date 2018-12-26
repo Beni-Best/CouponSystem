@@ -17,6 +17,7 @@ export class GetCouponComponent implements OnInit {
   ngOnInit() {
   }
 
+   //Get coupon by id 
   getCouponById(){
     while(this.coupons.length>0){
     this.coupons.pop();
@@ -33,11 +34,11 @@ export class GetCouponComponent implements OnInit {
     })
   }
 
+   //Get all coupons by type 
   getCouponByType(){
   console.log(this.coupModel.type)
     this._webApi.ajaxGetCouponByType(this.coupModel.type).subscribe((resp)=>{
       this.coupons=(resp.json())
-      // this.coupons.push(resp.json()) WHY THIS NOT WORK?!
     },(error)=>{
       Swal({
         type: 'error',
@@ -47,19 +48,18 @@ export class GetCouponComponent implements OnInit {
       console.log(error._body)
     })
   }
+  //Get all coupons by price
   getCouponByPrice(){
     console.log(this.coupModel.price)
       this._webApi.ajaxGetCouponByPrice(this.coupModel.price).subscribe((resp)=>{
         this.coupons=(resp.json())
-        // this.coupons.push(resp.json()) WHY THIS NOT WORK?!
       })
     }
-
+    //get all coupons by end date
     getCouponByEndDate(){
       console.log(this.coupModel.end_Date)
         this._webApi.ajaxGetCouponByEndDate(this.coupModel.end_Date).subscribe((resp)=>{
           this.coupons=(resp.json())
-          // this.coupons.push(resp.json()) WHY THIS NOT WORK?!
         })
       }
 

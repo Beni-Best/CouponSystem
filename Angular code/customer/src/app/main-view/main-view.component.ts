@@ -18,19 +18,19 @@ export class MainViewComponent implements OnInit {
   constructor(private _WebApiClientService:WebApiClientService) { 
     this._WebApiClientService.ajaxGetAllCoupons();
     this.coupons=_WebApiClientService.coupons;
-
-
   }
 
   ngOnInit() {
   }
 
+  //get all coupons by type
   typeName:string="";
   getCouponsByType(data:string){
     this.typeName=data;
     this._WebApiClientService.ajaxGetAllCouponsByType(data);
     this.price=null;
   }
+  //get all coupons
   getAllCoupons(){
     this.typeName="";
     this._WebApiClientService.ajaxGetAllCoupons();
@@ -38,11 +38,10 @@ export class MainViewComponent implements OnInit {
     this.showmycoupsflag=false;
   }
 
-
+  //add coupon to cart. Show warrning message if coupon already added to cart
   addToCart(index){
     for(let a of this.cartCoupons){
       if(a===this.coupons[index]){
-      //  alert("you already added this coupon to your cart")
        swal({
         type: 'warning',
         title: 'Opss...',
@@ -53,7 +52,6 @@ export class MainViewComponent implements OnInit {
     }
         this.cartCoupons.push(this.coupons[index]);
     this.cartCounter++;
-    // this._WebApiClientService.testCounter++;
     swal({
       type: 'success',
       title: 'Nice!',
@@ -61,6 +59,7 @@ export class MainViewComponent implements OnInit {
     })
   }
 
+  //Remove 1 from cartCounter when client removed item from cart
   removed(){
     this.cartCounter--;
   }
@@ -79,6 +78,7 @@ export class MainViewComponent implements OnInit {
   }
 
 
+  //get all coupons by price
   price:number;
   getCouponsByPrice(){
     this.typeName="";
@@ -92,11 +92,12 @@ export class MainViewComponent implements OnInit {
     }
   }
 
+  //get all purchased coupons
   getMyPurchasedCoupon(){
     this._WebApiClientService.ajaxGetMyPurchasedCoupons();
   }
-//   myCartFunc(){
  
+  //send logout request to angular service
   logout(){
     this._WebApiClientService.ajaxLogout();
   }

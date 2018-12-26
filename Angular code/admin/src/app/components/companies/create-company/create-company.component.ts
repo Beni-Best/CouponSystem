@@ -16,9 +16,15 @@ export class CreateCompanyComponent implements OnInit {
 
   ngOnInit() {
   }
+  //add company in the databse , show error message with exception if failed.
   addCompany(){
     this._http.post("http://localhost:8080/admin/createcompany" ,this.company).subscribe((resp)=>{
       console.log(resp);
+      swal({
+        type: 'success',
+        title: "Success!",
+        text: "Company Created!"
+      })
       this._WebApiClientService.ajaxGetAllCompany();
     },(error)=>{
       swal({

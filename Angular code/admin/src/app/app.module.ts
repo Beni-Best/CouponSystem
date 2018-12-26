@@ -37,8 +37,7 @@ import { GetCompanyComponent } from './components/companies/get-company/get-comp
     HttpModule,
     RouterModule.forRoot([
       {path:'compcomp', component:CompaniesComponent},
-      {path:'custcomp', component:CustomersComponent},
-      {path:'custcreate', component:CreateCustomerComponent}
+      {path:'custcomp', component:CustomersComponent}
     ])
   ],
   providers: [WebApiClientService],

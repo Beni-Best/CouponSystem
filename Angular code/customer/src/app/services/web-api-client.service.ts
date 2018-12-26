@@ -14,6 +14,7 @@ export class WebApiClientService {
 
   constructor(private _http:Http) { }
 
+  //get all coupons
   ajaxGetAllCoupons(){
     this._http.get('http://localhost:8080/customer/getallcoupons').subscribe((resp)=>{
       while(this.coupons.length>0){
@@ -26,7 +27,7 @@ export class WebApiClientService {
       console.log(this.coupons);
     })
   }
-
+  //get all coupons by type
   ajaxGetAllCouponsByType(data){
     this._http.get('http://localhost:8080/customer/getallcouponsbytype/'+data).subscribe((resp)=>{
       while(this.coupons.length>0){
@@ -39,7 +40,7 @@ export class WebApiClientService {
       console.log(this.coupons);
     })
   }
-
+  //get all coupons by price
   ajaxGetCouponsByPrice(data){
     this._http.get('http://localhost:8080/customer/getallcouponsbyprice/'+data).subscribe((resp)=>{
       while(this.coupons.length>0){
@@ -53,6 +54,7 @@ export class WebApiClientService {
     })
   }
 
+  //get all purchased coupons
   ajaxGetMyPurchasedCoupons(){
     this._http.get('http://localhost:8080/customer/getallpurchasedcoupons/').subscribe((resp)=>{
       while(this.myCoupons.length>0){
@@ -66,7 +68,7 @@ export class WebApiClientService {
     })
   }
 
-
+//purchase all coupons. that in the data:Coupon[]array. Show Warrning message with relevant exception on each coupon that was unable to purchase.
   errorLog :string =" ";
   ajaxPurchaseCoupon(data:Coupon[]){
     for (let coup of data){
@@ -90,8 +92,8 @@ export class WebApiClientService {
       }, 1000);
   }
 
+  //Send logot request to WS and redirect to login page.
 ajaxLogout(){
-
   swal({
     title: 'Are you sure?',
     text: "You will be redirected to the login screen",
@@ -102,10 +104,10 @@ ajaxLogout(){
     confirmButtonText: 'Yes, logout!'
   }).then((result) => {
     if (result.value) {
-      this._http.get('http://localhost:8080/customer/logout').subscribe((resp)=>{
+      this._http.post('http://localhost:8080/customer/logout',null).subscribe((resp)=>{
         console.log(resp)
+        window.location.href='http://localhost:8080';
       })
-      window.location.href='http://localhost:8080/login.html';
     }
   })
 

@@ -15,6 +15,7 @@ export class RemoveCompanyComponent implements OnInit {
   
   constructor(private _http:Http ,private _WebApiClientService:WebApiClientService) { }
 
+    //Remove this.company from database. Ask user as protection if he sure he want to delete. Throw error message with exception if failed.
   removeCompany(){
     swal({
       title: 'Are you sure?',

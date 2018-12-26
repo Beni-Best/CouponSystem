@@ -16,15 +16,14 @@ export class RemoveCouponComponent implements OnInit {
   ngOnInit() {
   }
 
+  //remoevs coupon using tmpCoup. Remove by id if tmpCoup.id !=null , if tmpCoup.id==0/null Remove by Title
   tmpCoup:Coupon = new Coupon;
-
   remove(){
     if(this.tmpCoup.id!=null){
    this._webService.ajaxDeleteCouponById(this.tmpCoup.id);
   }else if(this.tmpCoup.title!=null && this.tmpCoup.title!=''){
    this._webService.ajaxDeleteCouponByTitle(this.tmpCoup.title)
   }
-      // setTimeout(()=>{this.couponCreated.emit()}, 1000  )
   }
 
  

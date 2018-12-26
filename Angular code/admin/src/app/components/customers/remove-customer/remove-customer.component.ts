@@ -15,9 +15,8 @@ export class RemoveCustomerComponent implements OnInit {
   }
   
   customer:Customer = new Customer(null,"","");
-  
+      //Remove this.customer from database. Ask user as protection if he sure he want to delete. Throw error message with exception if failed.
   removeCustomer(){
-
     swal({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

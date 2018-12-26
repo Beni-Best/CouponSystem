@@ -16,6 +16,7 @@ export class UpdateCouponComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Update coupon , If string=='price' it will update coupon price. If string =='date' it will update coupon end date
   updateCoupon(data:string){
     if(data==='price'){
       this._webService.ajaxUpdateCouponPrice(this.coupon.price,this.coupon.id);

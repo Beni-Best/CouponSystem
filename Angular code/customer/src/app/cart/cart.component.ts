@@ -19,18 +19,18 @@ export class CartComponent implements OnInit {
     console.log()
   }
 
+  //remove coupon from cart
   removeFromCart(data){
     this.coupons.splice(data,1)
     this.removePressed.emit(1);
-    // this._WebApiClientService.testCounter--;
   }
 
+  //purchase all coupons that in the cart
   buyCoupons(){
     this._WebApiClientService.ajaxPurchaseCoupon(this.coupons);
     while(this.coupons.length>0){
       this.coupons.pop();
       this.removePressed.emit(1);
-      // this._WebApiClientService.testCounter--;
     }
   }
   }

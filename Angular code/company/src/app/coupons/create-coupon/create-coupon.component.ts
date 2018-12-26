@@ -18,12 +18,12 @@ export class CreateCouponComponent implements OnInit {
    tmpCoup:Coupon = new Coupon(null,null,null,null,null,null,'',null,'');
   
   
+   //Sending coupon to Angular Service and that sending ajax request for create coupon
    createCoupon(){
     let today = new Date();
     this.tmpCoup.start_Date=today;
    this._WebApiClientService.ajaxCreateCoupon(this.tmpCoup);
 
-  //  setTimeout(()=>{ this.couponCreated.emit()}, 1000  )
     
    }
 

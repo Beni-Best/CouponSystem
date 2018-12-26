@@ -14,8 +14,8 @@ export class GetCompanyComponent implements OnInit {
   showComp:Company=new Company(0,"","")
   constructor(private _http:Http) { }
 
+   //get company. If this.company.name=''(empty string) it will get company by id otherwise it will get company by this.company.name. Show error message with exception if failed
   getCompany(){
-
     if(this.company.name==''){
       this._http.get('http://localhost:8080/admin/getcompany/'+this.company.id).subscribe((resp)=>{
         console.log(resp)

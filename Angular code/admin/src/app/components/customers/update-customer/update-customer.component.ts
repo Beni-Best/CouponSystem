@@ -13,10 +13,15 @@ export class UpdateCustomerComponent implements OnInit {
   customer: Customer = new Customer(null,"","")
 
   constructor(private _http:Http,private _WebApiClientService:WebApiClientService) { }
-
+  //update customer in the database, Param string. 
   updateCustomer(){
     this._http.put('http://localhost:8080/admin/updatecustomer',this.customer).subscribe((resp)=>{
       console.log(resp);
+      swal({
+        type: 'success',
+        title: "Success!",
+        text: "Customer Updated!"
+      })
       this._WebApiClientService.ajaxGetAllCustomers();
     },(error)=>{
       swal({

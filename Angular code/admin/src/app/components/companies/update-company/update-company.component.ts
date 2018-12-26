@@ -15,6 +15,7 @@ export class UpdateCompanyComponent implements OnInit {
 
   constructor(private _http:Http ,private _WebApiClientService:WebApiClientService) { }
 
+  //update company in the database, Param string. If string=='password than update company password. Else update company email. Show error message with exception if failed.
   updateCompany(string:string){
     var tmpComp:Company = new Company(0,this.company.name,"","")
 
@@ -28,6 +29,11 @@ export class UpdateCompanyComponent implements OnInit {
        tmpComp.password=this.company.password;
        this._http.put('http://localhost:8080/admin/updatecompany/',tmpComp).subscribe((resp)=>{
          console.log(resp);
+         swal({
+          type: 'success',
+          title: "Success!",
+          text: "Company Password Updated!"
+        })
          this._WebApiClientService.ajaxGetAllCompany();
        },(error)=>{
          swal({
@@ -41,8 +47,6 @@ export class UpdateCompanyComponent implements OnInit {
         title: 'Oops...',
         text: error._body,})
       })
-       
-
     }else{
       this._http.get('http://localhost:8080/admin/getcompanybyname/'+this.company.name).subscribe((resp)=>{
         console.log(resp);
@@ -52,6 +56,11 @@ export class UpdateCompanyComponent implements OnInit {
         tmpComp.email=this.company.email;
         this._http.put('http://localhost:8080/admin/updatecompany/',tmpComp).subscribe((resp)=>{
           console.log(resp);
+          swal({
+            type: 'success',
+            title: "Success!",
+            text: "Company Email Updated!"
+          })
           this._WebApiClientService.ajaxGetAllCompany();
         },(error)=>{
           swal({

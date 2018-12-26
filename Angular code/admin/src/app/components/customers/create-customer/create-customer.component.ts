@@ -17,9 +17,15 @@ export class CreateCustomerComponent implements OnInit {
   ngOnInit() {
   }
 
+  //add customer in the databse , show error message with exception if failed.
   addCustomer(){
-this._http.post("http://localhost:8080/admin/createcustomer" ,this.customer).subscribe((resp)=>{
+  this._http.post("http://localhost:8080/admin/createcustomer" ,this.customer).subscribe((resp)=>{
   console.log(resp);
+  swal({
+    type: 'success',
+    title: "Success!",
+    text: "Customer Created!"
+  })
   this._WebApiClientService.ajaxGetAllCustomers();
 },(error)=>{
   swal({

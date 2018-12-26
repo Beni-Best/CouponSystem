@@ -53,10 +53,10 @@ export class WebApiClientService {
         confirmButtonText: 'Yes, logout!'
       }).then((result) => {
         if (result.value) {
-          this._http.get('http://localhost:8080/admin/logout').subscribe((resp)=>{
+          this._http.post('http://localhost:8080/admin/logout',null).subscribe((resp)=>{
             console.log(resp)
+            window.location.href='http://localhost:8080';
           })
-          window.location.href='http://localhost:8080';
         }
       })
 
